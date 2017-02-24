@@ -4,7 +4,7 @@
  */
 package dictionary;
 import java.util.HashMap;
-import java.util.Iterator;
+
 
 /**
  * @author joy
@@ -13,12 +13,14 @@ import java.util.Iterator;
 public class Node {
 	HashMap <Character,Node> keys;
 	boolean isValid;
+	String definition;
 	
 	//constructor
 	Node()
 	{
 		this.keys = new HashMap<Character, Node>();
 		this.isValid = false;
+		this.definition = null;
 
 	}
 
@@ -40,6 +42,19 @@ public class Node {
 		return output;
 
 	}
+
+	public void removeChild(Character ch)
+	{
+		this.keys.remove(ch);
+	}
+
+	public boolean isEmpty() {
+		return this.keys.size() == 0;
+	}
 	
+	public void setDefinition(String definition) {
+		this.isValid = true;
+		this.definition = definition;
+	}
 
 }
