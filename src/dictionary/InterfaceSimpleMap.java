@@ -1,11 +1,15 @@
-// implementation of the interface for utility HashMap data structure.
-
+/*
+ * InterfaceSimpleMap.java
+ * Author: Joy Rahman
+ * 
+ * Purpose:
+ *   public api to SimpleHashMap
+ */
 package dictionary;
 
 
-public interface InterfaceHashMap {
+public interface InterfaceSimpleMap {
 
-	// get, put, remove, size, toString
 	public void put(Character key, Node value);
 
 	public Node get(Character key);

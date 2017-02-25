@@ -1,3 +1,19 @@
+/*
+ * SimpleMap.java
+ * Author: Joy Rahman
+ * 
+ * Purpose:
+ *   This class implements a simple HashMap Utility to be used by the Trie implementation
+ * 
+ * Design:
+ *   Supports O(1) insert, O(1) search and O(1) deletion
+ *   Optimized for runtime, not memory(fixed size).
+ * Assumptions/Limitations: 
+ *   Fixed Size HashMap, with only a-z as the key range.
+ *   The hash function is a simple one that computes the index for a key.
+ *   since, the input is expected to contain only alphabets and the size of the storage is also equal to number of possible alphabets, we avoid the possible collision. 
+ * */
+
 package dictionary;
 
 class Data{
@@ -18,7 +34,7 @@ class Data{
 	
 }
 
-public class SimpleMap implements InterfaceHashMap {
+public class SimpleMap implements InterfaceSimpleMap {
 	Data[] storage = new Data[Constants.TOTAL_ALPHABET];
 	Character[] keySet = new Character[Constants.TOTAL_ALPHABET];
 	int size = 0;
@@ -54,22 +70,14 @@ public class SimpleMap implements InterfaceHashMap {
 	
 	private int findHash(Character key)
 	{
-		// a simple hash function which just find a position based on  modulo
-		// since, the code is expected to contain only alphabets and the size 
-		// of the storage is also equal to number of possible alphabets, we 
-		// avoid the possible collusion. 
-		// This is a most simplistic implementation, but not necessarily the most memory
-		// efficient program.
+
 		int index = (int) key % Constants.TOTAL_ALPHABET;
 		return index;
 	}
 	
 	public Character[] keySet()
 	{
-
 		return this.keySet;
-		
-		
 	}
 	
 	public int size()

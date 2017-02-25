@@ -1,35 +1,46 @@
+/* DictionaryTest.java
+ * 
+ *  a simple class to use the dictionary with multiple test input
+ *  
+ * */
+
+
 package dictionary;
 
 public class DictionaryTest {
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) 
+	{
 		Dictionary d = new Dictionary();
-		d.insert("good", "really good");
-		d.insert("goodboy", "some one being good");
-		d.insert("goody", "items");
-		d.insert("lack", "missing");
-		d.insert("larking", "moving");
-		d.insert("tea", "food");
+		/* test: insert words */
+		d.insert("cricket", "a wonderful bat-ball game");
+		d.insert("soccer", "a game played worldwide");
+		
+		/* test: insert similar words */
+		d.insert("terradata", "a silicon valley bigdata company");
+		d.insert("terrific", "extraordinarily great or intense");
+		d.insert("terrible", "severe");
+		d.insert("terrace", "a raised level with a vertical or sloping front");
+		d.insert("tea", "healthy drink");
+		
 
-		// d.debug();
-		System.out.println(d.retrive("tea"));
 
+		
+		/* test: retrieving definition of tea */
+		System.out.println(d.retrieve("tea"));
+        
+		/* test: delete entry "tea" */
 		d.delete("tea");
-		// d.debug();
-		System.out.println(d.retrive("tea"));
+		
+		/* test: retrieving definition of tea after deletion*/
+		System.out.println(d.retrieve("tea"));  //shall generate error as key is deleted.
 
-		d.insert("abal", "good for nothing");
-		d.insert("abaloka", "good for nothing");
-		d.insert("abalog", "good for nothing");
-		d.insert("abalik", "good for nothing");
-		d.insert("abali", "good for nothing");
-		d.insert("abantika", "good for nothing");
-		d.insert("Abantikati", "good for nothing");
-
-
-		System.out.println(d.retriveAll("aba"));
-		d.insert("f!ck", "bad word");
-		//d.debug();
+		
+		/* test: retrieving key:definition of all the words matching prefix "ter" */
+		System.out.println(d.retrieveAll("ter"));
+		
+		
+		/* test: inserting an invalid input, containing non-letters */
+		d.insert("123java", "intro to java");  //a bad input. shall generate error
 
 
 	}
