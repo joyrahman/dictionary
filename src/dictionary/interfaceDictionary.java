@@ -1,6 +1,6 @@
 package dictionary;
 
-public interface interfaceDictionary {
+public interface InterfaceDictionary {
 	public void insert(String word, String definition);
 
 	public void delete(String word);

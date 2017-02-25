@@ -1,21 +1,34 @@
 package dictionary;
 
-public class Dictionary implements interfaceDictionary {
+public class Dictionary implements InterfaceDictionary {
 	Node root; // root of the tree
 	// constructor
 	public Dictionary() {
 		this.root = new Node();
 	}
 
-	public void insert(String word, String definition) {
+	public void insert(String word, String definition) {		
+		// all the input word of the dictionary will be converted to lowercase		
+		word = word.toLowerCase();
+
+		// sanitize string & error handling
+        if (Helper.isSanitized(word)==false)
+        {
+        	//raise execption
+        	System.out.println("[ERROR]bad input. Item not inserted.");
+        	return;
+        }
+		
+		
 		insert(this.root, word, 0, definition); // start from position 0 and use
 												// the method
 										// recursively to insert each character
 	}
 
-	public void insert(Node currentNode, String word, Integer currentIndex, String definition) {
 
-		// check if whole string is consumed up-to this point. if such, make
+
+	public void insert(Node currentNode, String word, Integer currentIndex, String definition) {
+    	// check if whole string is consumed up-to this point. if such, make
 		// Node.isValid = true.
 		// return from this point, as a breaking condition for the recursion.
 		if (word.length() == currentIndex) {
@@ -25,6 +38,8 @@ public class Dictionary implements interfaceDictionary {
 		}
 
 		Character ch = word.charAt(currentIndex);
+
+		
 		Node nextChild = currentNode.keys.get(ch);
 		if (nextChild == null) {
 			// insert the new node
@@ -92,18 +107,18 @@ public class Dictionary implements interfaceDictionary {
 
 	}
 
-	public void debug() {
-		this.debug(this.root);
-	}
+//	public void debug() {
+//		this.debug(this.root);
+//	}
 
-	private void debug(Node current) {
-		System.out.println(current.toString());
-		for (Character ch : current.keys.keySet()) {
-			Node nextCurrent = current.getChild(ch);
-			this.debug(nextCurrent);
-		}
-
-	}
+//	private void debug(Node current) {
+//		System.out.println(current.toString());
+//		for (Character ch : current.keys.keySet()) {
+//			Node nextCurrent = current.getChild(ch);
+//			this.debug(nextCurrent);
+//		}
+//
+//	}
 
 	@Override
 	public String retrive(String word) {
@@ -153,13 +168,14 @@ public class Dictionary implements interfaceDictionary {
 
 			// if current node is valid, the result must contain this word
 			if (currentNode.isValid == true)
-				result = prefix + ":" + currentNode.definition + ",";
+				result = prefix + ":" + currentNode.definition + "\n";
 			// case1: no children. Just return string upto this point.
 			if (currentNode.isEmpty())
 				return result;
 			// case2: the node has children. Explore each children recursively
 			for (Character ch : currentNode.keys.keySet()) {
-				result = result + searchPrefix(currentNode.getChild(ch), prefix + ch, currentIndex + 1);
+				if (ch!=null)
+					result = result + searchPrefix(currentNode.getChild(ch), prefix + ch, currentIndex + 1);
 			}
 
 			return result;

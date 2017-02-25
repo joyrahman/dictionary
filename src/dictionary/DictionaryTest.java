@@ -24,8 +24,13 @@ public class DictionaryTest {
 		d.insert("abalik", "good for nothing");
 		d.insert("abali", "good for nothing");
 		d.insert("abantika", "good for nothing");
+		d.insert("Abantikati", "good for nothing");
+
 
 		System.out.println(d.retriveAll("aba"));
+		d.insert("f!ck", "bad word");
+		//d.debug();
+
 
 	}
 

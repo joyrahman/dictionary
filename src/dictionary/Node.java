@@ -3,7 +3,7 @@
  * 
  */
 package dictionary;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 
 /**
@@ -11,14 +11,16 @@ import java.util.HashMap;
  *
  */
 public class Node {
-	HashMap <Character,Node> keys;
+	//HashMap <Character,Node> keys;
+	SimpleMap keys;
 	boolean isValid;
 	String definition;
 	
 	//constructor
 	Node()
 	{
-		this.keys = new HashMap<Character, Node>();
+		//this.keys = new HashMap<Character, Node>();
+		this.keys = new SimpleMap();
 		this.isValid = false;
 		this.definition = null;
 
