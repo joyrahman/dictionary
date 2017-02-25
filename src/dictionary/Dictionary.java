@@ -58,7 +58,7 @@ public class Dictionary implements InterfaceDictionary {
 		word = word.toLowerCase();		//convert to lower-case before insertion
 		
         if (Helper.isSanitized(word)==false){  // check input for unsupported characters & error handling
-        	System.out.println("[ERROR] Bad input. Item not inserted.");
+        	System.out.println(word+ ": " +"[ERROR: Bad input. Item not inserted]");
         	return;	 //do not insert the item
         }
 		
@@ -77,7 +77,7 @@ public class Dictionary implements InterfaceDictionary {
 		String result = this.search(this.root, word, 0);
 		if (result != null)
 			return result;
-		return ("[ERROR] " + word +": " +"Entry Not found");
+		return (word +": " + "[ERROR: Entry Not found]");
 		
 	}
     /*	public void retrieveAll(String prefix)
@@ -90,16 +90,6 @@ public class Dictionary implements InterfaceDictionary {
 	public String retrieveAll(String prefix) {
 		return this.searchPrefix(this.root, prefix, 0);
 	}
-	
-    /*	private String search(Node currentNode, String word, Integer currentIndex)
-	 *      recursive method to search for a word into the dictionary.
-	 *      returns the definition or null, if not found
-	 *      
-	 *      
-	 */
-
-	
-	
 
 	/* private void insert(Node currentNode, String word, Integer currentIndex, String definition)
 	 *   private method to insert word into the trie, recursively, character by character
@@ -198,6 +188,7 @@ public class Dictionary implements InterfaceDictionary {
 	 *          else search recursively from next position
 	 *  
 	 * */
+
 
 
 	private String search(Node currentNode, String word, Integer currentIndex) {

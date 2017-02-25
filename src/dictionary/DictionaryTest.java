@@ -26,20 +26,24 @@ public class DictionaryTest {
 
 		
 		/* test: retrieving definition of tea */
+		System.out.println(">> Find word: <tea>");
 		System.out.println(d.retrieve("tea"));
         
 		/* test: delete entry "tea" */
 		d.delete("tea");
 		
 		/* test: retrieving definition of tea after deletion*/
+		System.out.println(">> Find word: <tea>");
 		System.out.println(d.retrieve("tea"));  //shall generate error as key is deleted.
 
 		
 		/* test: retrieving key:definition of all the words matching prefix "ter" */
-		System.out.println(d.retrieveAll("ter"));
+		System.out.println(">> Find word with prefix: <ter>");
+		System.out.print(d.retrieveAll("ter"));
 		
 		
 		/* test: inserting an invalid input, containing non-letters */
+		System.out.println(">> Insert word: <123java>");
 		d.insert("123java", "intro to java");  //a bad input. shall generate error
 
 
